@@ -1,0 +1,32 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="paymentDetailId" [value]=service.formData.paymentDetailId>
+    <div class="form-group">
+        <label>Card Owner Name</label>
+        <input name="cardOwnerName" #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" class="form-control" required [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched" placeholder="Enter full Name">
+    </div>
+
+   
+
+    <div class="form-group">
+        <label>Card Number</label>
+        <input name="cardNumber" #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber" class="form-control" required maxlength="16" minlength="16" [class.invalid]="cardNumber.invalid && cardNumber.touched" placeholder="16 digit card number">
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Valid Through</label>
+            <input type="password" name="securityCode" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" class="form-control" required maxlength="3" minlength="3" [class.invalid]="securityCode.invalid && securityCode.touched" placeholder="Security Code">
+        </div>
+    
+        <div class="form-group col-md-6">
+            <label>Expairation Date</label>
+            <input name="expairationDate" #expairationDate="ngModel" [(ngModel)]="service.formData.expairationDate" class="form-control" required maxlength="5" minlength="5" [class.invalid]="expairationDate.invalid && expairationDate.touched" placeholder="MM/yy">
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit Info</button>
+
+    </div>
+</form>
